@@ -31,4 +31,4 @@ class LoadDimensionOperator(BaseOperator):
         redshift = PostgresHook(postgres_conn_id=self.conn_id)
         if self.truncate:
             redshift.run(f"TRUNCATE TABLE {self.table}")
-        redshift.run(f"INSERT TABLE {self.table} {self.query}")
+        redshift.run(f"INSERT INTO {self.table} {self.query}")
