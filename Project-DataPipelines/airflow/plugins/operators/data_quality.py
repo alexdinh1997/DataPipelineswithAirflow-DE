@@ -12,7 +12,7 @@ class DataQualityOperator(BaseOperator):
                  # Define your operators params (with defaults) here
                  # Example:
                  # conn_id = your-connection-name
-                 redshift_conn_id="",
+                 redshift_conn_id=[],
                  table="",
                  *args, **kwargs):
 
