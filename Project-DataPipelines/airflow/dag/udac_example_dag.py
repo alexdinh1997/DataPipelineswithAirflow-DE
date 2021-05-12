@@ -8,7 +8,11 @@ from helpers import SqlQueries
 
 # AWS_KEY = os.environ.get('AWS_KEY')
 # AWS_SECRET = os.environ.get('AWS_SECRET')
-
+"""
+Remember to create tables first on redshift
+With create_tables.sql file
+!!!
+"""
 default_args = {
     'owner': 'udacity',
     'start_date': datetime(2019, 1, 12),
@@ -60,7 +64,7 @@ load_user_dimension_table = LoadDimensionOperator(
     task_id='Load_user_dim_table',
     dag=dag,
     conn_id="redshift",
-    table="user",
+    table="users",
     query=SqlQueries.user_table_insert,
     truncate=True
 )
@@ -69,7 +73,7 @@ load_song_dimension_table = LoadDimensionOperator(
     task_id='Load_song_dim_table',
     dag=dag,
     conn_id="redshift",
-    table="song",
+    table="songs",
     query=SqlQueries.song_table_insert,
     truncate=True
 )
@@ -78,7 +82,7 @@ load_artist_dimension_table = LoadDimensionOperator(
     task_id='Load_artist_dim_table',
     dag=dag,
     conn_id="redshift",
-    table="artist",
+    table="artists",
     query=SqlQueries.artist_table_insert,
     truncate=True
 )
